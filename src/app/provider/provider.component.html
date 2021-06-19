@@ -1,0 +1,23 @@
+<div class="container">
+    <label style="margin-top: 30px; "> My Supplies</label>
+    <div class="table-responsive">
+        <table class="table table-bordered " >
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col">Description</th>
+              <th scope="col">Status</th>
+              <th scope="col">Update</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let supplies of listOfSupplies">
+              <td>{{supplies.category}}</td>
+              <td>{{supplies.description}}</td>
+              <td>{{supplies.status}}</td>
+              <!-- <td>{{providor.contact}}</td> -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+</div>

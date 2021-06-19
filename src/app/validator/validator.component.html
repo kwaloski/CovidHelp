@@ -1,0 +1,37 @@
+<!-- <p>requestor works!</p> -->
+<div class="container">
+    <div class="btn-group  " role="group" aria-label="Basic example" style="margin-top: 30px;">
+      <button class="btn btn-outline-primary" type="button" (click)="toProvider()">Provider</button>
+  
+  
+      <button class="btn btn-outline-primary" type="button" (click)="toRequestor()">Requestor</button>
+  
+  
+      <button class="btn btn-outline-primary" type="button" >Volunteer</button>
+      <!-- </div> -->
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered " style="margin-top: 30px; ">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Approve</th>
+            <th scope="col">Remark</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let providor of selectedList">
+            <td>{{providor.name}}</td>
+            <td>{{providor.contact}}</td>
+            <!-- <td>{{providor.distance}}</td>
+            <td>{{providor.contact}}</td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    
+  
+  
+  </div>
