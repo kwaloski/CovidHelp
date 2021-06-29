@@ -1,0 +1,93 @@
+<!-- <div class="container">
+    <div class=" card" style="margin-top: 30px; ">
+      <div class="card-body col-md-12 text-center">
+        <form #detailForm="ngForm" (ngSubmit)="signUpUser()">
+          <div class="form-group">
+            <div class="input-group flex-nowrap">
+              <span class="input-group-text" id="addon-wrapping">First Name</span>
+              <input type="text" class="form-control" placeholder="Enter First Name" [(ngModel)]=user.firstName name="firstName"
+                #firstName="ngModel" required>
+            </div>
+             <br>
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping">Last Name</span>
+                <input type="text" class="form-control" placeholder="Enter Last Name" [(ngModel)]=user.lastName name="lastName"
+                  #lastName="ngModel" >
+              </div>
+              <br>
+           
+            <div class="input-group flex-nowrap">
+              <span class="input-group-text" id="addon-wrapping">@</span>
+              <input type="text" class="form-control" placeholder="Phone Number" [(ngModel)]=user.phone name="phone"
+                #phone="ngModel" required>
+            </div>
+            <br>
+            
+  
+            <button class="btn btn-primary" type="submit" [disabled]="!detailForm.valid">Sign Up</button>
+           
+  
+
+          </div>
+        </form>
+  
+  
+      </div>
+    </div>
+  </div> -->
+
+            <!-- <button (click)="loginWithGoogle()" mat-raised-button class="google-login-btn">Login with Google</button> -->
+            <!-- <a type="button" (click)="">Sign up</a> -->
+
+  <div class="container">
+    <mat-card class="example-card ">
+      <mat-card-header >
+        <mat-card-title>Sign Up</mat-card-title>
+        <hr>
+        <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+      </mat-card-header>
+      <mat-card-content class="col-md-12 text-center">
+        <form  class=example-form #detailForm="ngForm" (ngSubmit)="signUpUser()">
+          <div class="form-group">
+            <p>
+              <mat-form-field appearance="outline" >
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="Your first name here" [(ngModel)]=user.firstName name="firstName"
+                #firstName="ngModel" required>
+                <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Hint</mat-hint> -->
+              </mat-form-field>
+            </p>
+            <p>
+              <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Your last name here" [(ngModel)]=user.lastName name="lastName"
+                #lastName="ngModel">
+                <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Hint</mat-hint> -->
+              </mat-form-field>
+            </p>
+            <p>
+              <mat-form-field appearance="outline">
+                <mat-label>Phone</mat-label>
+                <input matInput placeholder="Enter your mobile number" [(ngModel)]=user.phone name="phone"
+                #phone="ngModel" required>
+                <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Hint</mat-hint> -->
+              </mat-form-field>
+            </p>
+            <p>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Add your details</mat-label>
+                <textarea matInput placeholder="Ex. It makes me feel..." [(ngModel)]=user.details name="comment" #comment="ngModel" ></textarea>
+              </mat-form-field>
+            
+            </p>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!detailForm.valid">Sign Up</button>
+          </div>
+        </form>
+        
+    
+      </mat-card-content>
+    </mat-card>
+  </div>

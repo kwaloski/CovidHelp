@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/5d1bc84b-d902-4d10-a1a2-4e7afa8227b4/resourceGroups/AzureHack/providers/Microsoft.Web/sites/verifiedcovidhelp",
+    "appService.deploySubpath": "."
+}

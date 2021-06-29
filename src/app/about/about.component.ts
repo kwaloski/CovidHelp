@@ -1,22 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginComponent } from '../login/login.component';
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
-
-  constructor(private router:Router) { }
+loginType:any;
+  constructor(private router:Router) {
+   
+   }
 
   ngOnInit(): void {
   }
  public toRequestor(){
-   this.router.navigateByUrl('/requestor')
+
+
+    this.router.navigate(['/requestor'],{state:{data:2}})
+
 
 }
 public toProvider(){
-  this.router.navigateByUrl('/provider')
+ 
+  this.router.navigate(['/login'],{state:{data:1}})
 
 }
 public toValidator(){

@@ -1,0 +1,62 @@
+<!-- <div class="col-sm-3"> -->
+    <div class="container">
+
+        <!-- d-flex justify-content-center -->
+        <div class="row justify-content-md-center">
+            <!-- <div class="col-md-6"> -->
+    
+                <div class="card">
+                    <div class="card-header">
+                      {{provider.providerName}}
+                      <ngb-rating [max]="5" [(rate)]=provider.providerRating [readonly]="true" style="float: right;"></ngb-rating>
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title"></h5>
+                      <p class="card-text">{{provider.description}}</p>
+                     
+                       
+                      
+                        
+                    </div>
+                    
+                    <mat-card> Give your Rating: <ngb-rating [max]="5" [(ngModel)]=rating.rating [readonly]="false" name="star" #star="ngModel" required></ngb-rating>
+                      <form #ratingForm="ngForm" (ngSubmit)="addRating()">
+                        <div class="form-group">
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Leave a comment</mat-label>
+                        <textarea matInput placeholder="Ex. It makes me feel..." [(ngModel)]=rating.comment name="comment" #comment="ngModel" required></textarea>
+                      </mat-form-field>
+                    
+                      <button mat-raised-button type="submit" [disabled]="!ratingForm.valid">Add Comment</button>
+                        </div>
+                    </form>
+                    </mat-card> 
+                    
+                    <hr>
+                    <h2>Comments:</h2>
+                  </div>
+                  <div *ngFor="let rating of ratings">
+                  <mat-card style="margin-top: 10px;">
+                    <mat-card-header>
+                    <mat-card-subtitle>{{rating.name}}
+                      <ngb-rating [max]="5" [(rate)]=rating.rating [readonly]="true" style="float: right;"></ngb-rating>
+                    </mat-card-subtitle>
+                  </mat-card-header>
+                  <mat-card-content>{{rating.comment}}</mat-card-content>
+                  <mat-card-footer>
+                    <mat-card-subtitle>{{rating.commentDate}}</mat-card-subtitle></mat-card-footer>
+                  </mat-card>
+                </div>
+            <!-- </div> -->
+        </div>
+    
+    
+       
+        
+       
+     
+    
+            
+        </div>
+
+    

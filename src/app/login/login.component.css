@@ -1,0 +1,35 @@
+.google-login-btn {
+    background-image: url('src/assets/google-logo.png');
+    background-repeat: no-repeat;
+    background-size: 10%;
+    background-position: 10%;
+    padding-left: 10%;
+    
+  }
+ 
+.example-card {
+   
+   
+    margin-top: 30px;
+    border-radius: 30px;
+    border-style:ridge ;
+    align-self: center;
+
+    
+  }
+  .exampleform {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  
+  /* .container{
+      vertical-align: middle;
+
+  }
+   */

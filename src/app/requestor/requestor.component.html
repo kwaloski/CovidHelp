@@ -1,6 +1,6 @@
 <!-- <p>requestor works!</p> -->
 <div class="container">
-  <div class="btn-group  " role="group" aria-label="Basic example" style="margin-top: 30px;">
+  <!-- <div class="btn-group  " role="group" aria-label="Basic example" style="margin-top: 30px;">
     <button class="btn btn-outline-primary" type="button" (click)="onSelectOxy()">Oxygen</button>
 
 
@@ -8,45 +8,66 @@
 
 
     <button class="btn btn-outline-primary" type="button" (click)="onSelectMed()">Medicine</button>
-    <!-- </div> -->
+   
+  </div> -->
+  <div class="btn-group  " role="group" aria-label="Basic example" style="margin-top: 30px;"
+  *ngFor="let category of categoryList">
+    <button mat-fab color="primary"  matTooltip={{category.description}}>{{category.name}}</button>
+    
   </div>
+ 
+
+
   <div class="table-responsive">
     <table class="table table-bordered " style="margin-top: 30px; ">
       <thead class="table-dark">
         <tr>
           <th scope="col">Name</th>
           <th scope="col">Description</th>
-          <th scope="col">Distance(km)</th>
+          <th scope="col" *ngIf="show">Distance(km)</th>
           <th scope="col">Contact</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let providor of selectedProvider">
-          <td>{{providor.name}}</td>
-          <td>{{providor.description}}</td>
-          <td>{{providor.distance}}</td>
-          <td>{{providor.contact}}</td>
+        <!-- <ng-container *ngFor="let provider of selectedProvider"> -->
+        <tr *ngFor="let provider of providers">
+          <td><a [routerLink]="['/review']" [state]="{data:provider}"> {{provider.providerName}}</a>
+            <ngb-rating [max]="5" [(rate)]=provider.providerRating [readonly]="true"></ngb-rating>
+          </td>
+          <td>{{provider.description}}</td>
+          <td *ngIf="show">{{provider.distance}}</td>
+          <td><a href="tel: {{provider.phone}}" class="button button-positive">Call </a></td>
         </tr>
+
+        <!-- <tr *ngFor="let provider of providors">
+
+           <tr *ngFor="let supply of provider.supplies>
+          <td>{{provider.name}}</td>
+          <td>{{providors.supplies.description}}</td>
+          <td>{{providor.distance}}</td>
+          <td><a href="tel: {{providor.contact}}" class="button button-positive">Call </a></td>
+        </tr>
+        </tr> -->
       </tbody>
     </table>
   </div>
 
-  <form [formGroup]="form" (ngSubmit)="submit()" >
-<!-- <div style="display: inline-flex;"> -->
+  <form #requestForm="ngForm" (ngSubmit)="addRequest()">
+    <!-- <div style="display: inline-flex;"> -->
     <div class="form-group">
-      <select formControlName="category" class="form-control" >
-        <option disabled>Select Category</option>
-        <option>Choose Category</option>
-        <option *ngFor="let category of categoryList">{{category}}</option>
+      <label>Choose Category</label>
+      <select class="form-control" [(ngModel)]=request.category name="categories" #categories="ngModel" required>
+
+
+        <option *ngFor="let category of categoryList">{{category.name}}</option>
       </select>
-      <!-- <div *ngIf="f.website.touched && f.website.invalid" class="alert alert-danger">
-          <div *ngIf="f.website.required">Name is required.</div>
-      </div> -->
+
+      <button class="btn btn-primary " type="submit" style="float: right;" [disabled]="!requestForm.valid">Add
+        Request</button>
     </div>
 
-      <button class="btn btn-primary " type="submit" style="float: right;" >Add Request</button>
-    
-  <!-- </div> -->
+
+
   </form>
 
 

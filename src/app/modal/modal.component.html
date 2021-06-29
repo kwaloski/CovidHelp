@@ -1,25 +1,27 @@
 <div id="modal-content-wrapper" class="col text-center">
-    <!-- <header id="modal-header">
+    <header id="modal-header">
         <h1 id="modal-title">Allow Location</h1>
     </header>
-    <footer id="modal-footer" >
+    <!-- <footer id="modal-footer" >
         <button mat-raised-button id="modal-action-button" (click)="actionFunction()" m>Allow Location </button>
     </footer>
     <header id="modal-header">
         <h1 id="modal-title">Or</h1>
     </header> -->
     <section id="modal-body">
-        <!-- <p>To search we need location</p> -->
-        <div>
-            <button mat-raised-button id="modal-action-button" (click)="actionFunction()" m>Allow Location </button>
-        </div>
         
-        <h1 >Or</h1>
-        <div class="form-group">
-            <!-- <label>Enter address</label> -->
-            <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
-          </div>
+        <div>
+            <button mat-raised-button id="modal-action-button" (click)="actionFunction()" m>Ok</button>
+        
+            <button mat-raised-button id="modal-action-button" (click)="closeModal()" m>Cancel</button>
+        </div>
     </section>
+        <!-- <h1 >Or</h1>
+        <div class="form-group">
+            
+            <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+          </div> -->
+    
     <!-- <header id="modal-header">
         <h1 id="modal-title">Allow Location</h1>
     </header>

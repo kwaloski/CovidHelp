@@ -1,4 +1,9 @@
 <div class="container">
+  <!-- <div class="btn-group  " role="group" aria-label="Basic example" style="margin-top: 30px;"
+  *ngFor="let category of categoryList">
+    <button mat-fab color="primary"  matTooltip={{category.description}}>{{category.name}}</button>
+    
+  </div> -->
     <label style="margin-top: 30px; "> My Supplies</label>
     <div class="table-responsive">
         <table class="table table-bordered " >
@@ -12,12 +17,49 @@
           </thead>
           <tbody>
             <tr *ngFor="let supplies of listOfSupplies">
-              <td>{{supplies.category}}</td>
+              <td>{{supplies.categoryName}}</td>
               <td>{{supplies.description}}</td>
-              <td>{{supplies.status}}</td>
+              <!-- <td><mat-slide-toggle [(ngModel)]="supplies.status">Slide me!</mat-slide-toggle>
+
+               </td> -->
+               <!-- {{supplies.status}} -->
               <!-- <td>{{providor.contact}}</td> -->
             </tr>
           </tbody>
         </table>
       </div>
+      <hr>
+      <label>Add Supplies</label>
+      <form #requestForm="ngForm" (ngSubmit)="addSupply()">
+        <!-- <div style="display: inline-flex;"> -->
+        <div class="form-group">
+          <!-- <label>Choose Category</label> -->
+          <!-- <select class="form-control" [(ngModel)]=supply.category (click)="toggle()" name="categories" #categories="ngModel" required>
+    
+    
+            <option *ngFor="let category of categoryList">{{category.name}}</option>
+          </select> -->
+          <mat-form-field appearance="fill">
+            <mat-label>Category</mat-label>
+            <select matNativeControl [(ngModel)]=categoryName name="categories" (click)="toggle()" #categories="ngModel" required>
+              <option value="" selected></option>
+              <option *ngFor="let category of categoryList" >
+                {{category.name}}({{category.description}})
+              </option>
+            </select>
+          </mat-form-field>
+    
+          
+        </div>
+        <div class="input-group mb-3">
+          <input *ngIf="show" type="text" class="form-control" placeholder="Add supply details" aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]=addSupplyRequest.description name="description" #description="ngModel" required>
+          <button class="btn btn-primary" type="submit" [disabled]="!requestForm.valid">Add Supply</button>
+        </div>
+        
+        <!-- <input *ngIf="show" type="text" [(ngModel)]=supply.description name="description" #description="ngModel" required>
+        <button class="btn btn-primary " type="submit" style="float: right;" [disabled]="!requestForm.valid">Add
+          supply</button> -->
+    
+      </form>
+      
 </div>

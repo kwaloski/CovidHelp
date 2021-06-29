@@ -1,0 +1,33 @@
+<div *ngIf="socialAuthServive.authState | async as socialUser">
+  
+    <p>Hello, {{socialUser.name}}!</p>
+    <br>
+    <p>Your email: {{socialUser.email}}</p>
+    <br>
+    <button mat-raised-button (click)="logout()">Logout</button>
+  </div>
+
+  <div class="container">
+    <div class=" card" style="margin-top: 30px; ">
+      <div class="card-body col-md-12 text-center">
+        <div>
+          <!-- <div *ngIf="socialAuthServive.authState | async as socialUser"> -->
+            <div>
+  
+            <p>Hello, {{user.firstName}} {{user.lastName}}!</p>
+            <br>
+            <!-- <p>Your email: {{socialUser.email}}</p>
+            <br>
+            <p>Please Provide Details :</p>
+            <br> -->
+            
+            <button mat-raised-button (click)="logout()">Logout</button>
+          </div>
+          <!-- <button (click)="loginWithGoogle()" mat-raised-button class="google-login-btn">Login with Google</button> -->
+        </div>
+  
+  
+      </div>
+    </div>
+  </div>
+  

@@ -1,5 +1,5 @@
-import { Component, OnInit,ViewChild, ElementRef, NgZone } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, OnInit,ViewChild, ElementRef, NgZone, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MapsAPILoader } from '@agm/core';
 @Component({
   selector: 'app-modal',
@@ -17,31 +17,33 @@ export class ModalComponent implements OnInit {
   public searchElementRef!: ElementRef;
 
   constructor(public dialogRef: MatDialogRef<ModalComponent>  ,private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone,) { }
+    private ngZone: NgZone, @Inject(MAT_DIALOG_DATA) public modalData: any) { 
+      
+    }
 
   ngOnInit() {
-    this.mapsAPILoader.load().then(() => {
+    // this.mapsAPILoader.load().then(() => {
     
-      this.geoCoder = new google.maps.Geocoder;
+    //   this.geoCoder = new google.maps.Geocoder;
 
-      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
-      autocomplete.addListener("place_changed", () => {
-        this.ngZone.run(() => {
-          //get the place result
-          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+    //   let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
+    //   autocomplete.addListener("place_changed", () => {
+    //     this.ngZone.run(() => {
+    //       //get the place result
+    //       let place: google.maps.places.PlaceResult = autocomplete.getPlace();
 
-          //verify result
-          if (place.geometry === undefined || place.geometry === null) {
-            return;
-          }
+    //       //verify result
+    //       if (place.geometry === undefined || place.geometry === null) {
+    //         return;
+    //       }
 
-          //set latitude, longitude and zoom
-          this.latitude = place.geometry.location.lat();
-          this.longitude = place.geometry.location.lng();
-           console.log(this.latitude,this.longitude)
-        });
-      });
-    });
+    //       //set latitude, longitude and zoom
+    //       this.latitude = place.geometry.location.lat();
+    //       this.longitude = place.geometry.location.lng();
+    //        console.log(this.latitude,this.longitude)
+    //     });
+    //   });
+    // });
 }
 
 
@@ -50,8 +52,10 @@ export class ModalComponent implements OnInit {
   actionFunction() {
     // alert("You have logged out.");
    this.setCurrentLocation();
+  
     this.closeModal();
   }
+ 
   private setCurrentLocation() {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {

@@ -2,8 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes,PreloadAllModules } from '@angular/router';
 import { AboutComponent } from './about/about.component';
+import { AuthGuardService } from './auth-guard.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
 import { ProviderComponent } from './provider/provider.component';
 import { RequestorComponent } from './requestor/requestor.component';
+import { ReviewComponent } from './review/review.component';
+import { SignupComponent } from './signup/signup.component';
 import { ValidatorComponent } from './validator/validator.component';
 
 
@@ -24,16 +29,30 @@ const routes: Routes = [
     component:RequestorComponent
   },
   {
+    path: 'login',
+    component:LoginComponent
+  },{
+    path: 'dashboard',
+    component:DashboardComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
     path: 'provider',
     component:ProviderComponent
   },{
+    path: 'review',
+    component:ReviewComponent
+  },{
     path: 'validator',
     component:ValidatorComponent
-  },
-  {
-    path: '**',
-    redirectTo: 'requestor'
+  },{
+    path: 'signup',
+    component:SignupComponent
   }
+  // {
+  //   path: '**',
+  //   redirectTo: 'requestor'
+  // }
 ];
 
 @NgModule({
