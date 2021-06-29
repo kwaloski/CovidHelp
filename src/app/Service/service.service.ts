@@ -10,6 +10,7 @@ import { VerifyOtpResponse } from '../Response.Model/verifyOtp.response';
 
 import { AddSupplyCategory } from '../Request.Model/addSupplyCategory.request';
 import { AddSupply } from '../Request.Model/addSupply.request.model';
+import { ApproveRequest } from '../Request.Model/approve.request';
 
 
 @Injectable({
@@ -59,9 +60,9 @@ return this.http.post(this.sendOTPUrl,request);
   {
     return this.http.get(`${this.Url}Supply`);
   }
-  getProviderSupply(request:any):Observable<any>
+  getProviderSupply(providerId:string):Observable<any>
   {
-    return this.http.get(`${this.Url}ProviderSupply`);
+    return this.http.get(`${this.Url}ProviderSupply?providerId=${providerId}`);
   }
   getSupplyByLocation(request:any):Observable<any>
   {
@@ -79,5 +80,11 @@ return this.http.post(this.sendOTPUrl,request);
   {
     return this.http.get(`${this.Url}AverageRating`);
   }
-
+  getUnApproveUser(userTypeId:number):Observable<any>
+  {
+    return this.http.get(`${this.Url}UnapprovedUser?userTypeId=${userTypeId}`);
+  }
+  approveUser(request:ApproveRequest):Observable<any>{
+    return this.http.put(`${this.Url}ApproveUser`,request);
+  }
 }

@@ -24,7 +24,7 @@ export class ProviderComponent implements OnInit {
     this.supply = new GetSupplyResponse();
     this.addSupplyRequest = new AddSupply();
 this.service.getProviderSupply(this.app.currentUser.userId).subscribe({
-  next: data => { console.log(data) ,this.supply=data}, error: error => { console.log(error) }
+  next: data => { console.log(data) ,this.listOfSupplies=data}, error: error => { console.log(error) }
 });
 
     this.service.getSupplyCategory().subscribe({

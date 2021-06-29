@@ -1,13 +1,13 @@
 <!-- <p>requestor works!</p> -->
 <div class="container">
     <div class="btn-group  " role="group" aria-label="Basic example" style="margin-top: 30px;">
-      <button class="btn btn-outline-primary" type="button" (click)="toProvider()">Provider</button>
+      <button class="btn btn-outline-primary" type="button" (click)="getSuppliers()">Supplier</button>
   
   
-      <button class="btn btn-outline-primary" type="button" (click)="toRequestor()">Requestor</button>
+      <button class="btn btn-outline-primary" type="button" (click)="toRequestor()">Supplies</button>
   
   
-      <button class="btn btn-outline-primary" type="button" >Volunteer</button>
+      <button class="btn btn-outline-primary" type="button"  >Volunteer</button>
       <!-- </div> -->
     </div>
     <div class="table-responsive">
@@ -16,16 +16,22 @@
           <tr>
             <th scope="col">Name</th>
             <th scope="col">Contact</th>
-            <th scope="col">Approve</th>
             <th scope="col">Remark</th>
+            <th scope="col">Status</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let providor of selectedList">
-            <td>{{providor.name}}</td>
-            <td>{{providor.contact}}</td>
-            <!-- <td>{{providor.distance}}</td>
-            <td>{{providor.contact}}</td> -->
+          <tr *ngFor="let providor of VolunteerList">
+            <td>{{providor.firstName}} {{providor.lastName}}</td>
+            <td>{{providor.phone}}</td>
+            <td>{{providor.details}}</td>
+             <td><mat-slide-toggle [(ngModel)]="providor.isApproved" ></mat-slide-toggle>
+
+               </td>
+               <td>
+                <a mat-raised-button [routerLink]="['/validator']" (click)="updateApprove(providor)"  >Update</a>
+               </td>
           </tr>
         </tbody>
       </table>
