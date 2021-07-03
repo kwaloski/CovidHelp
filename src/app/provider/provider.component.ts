@@ -3,6 +3,8 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AppComponent } from '../app.component';
 import { Category } from '../category';
 import { AddSupply } from '../Request.Model/addSupply.request.model';
+import { ApproveRequest } from '../Request.Model/approve.request';
+import { ApproveSupplyRequest } from '../Request.Model/approveSupply.request';
 import { GetSupplyResponse } from '../Response.Model/getSupply.response';
 import { ServiceService } from '../Service/service.service';
 import { Supplies } from './supplies';
@@ -13,7 +15,7 @@ import { Supplies } from './supplies';
   styleUrls: ['./provider.component.css']
 })
 export class ProviderComponent implements OnInit {
-  supply: any
+  
   addSupplyRequest: any
   show = false;
   categoryName: any;
@@ -21,7 +23,7 @@ export class ProviderComponent implements OnInit {
   categoryList!: Category[];
   dialogRef: any;
   constructor(public matDialog: MatDialog, private service: ServiceService, private app: AppComponent) {
-    this.supply = new GetSupplyResponse();
+    
     this.addSupplyRequest = new AddSupply();
 this.service.getProviderSupply(this.app.currentUser.userId).subscribe({
   next: data => { console.log(data) ,this.listOfSupplies=data}, error: error => { console.log(error) }
@@ -59,16 +61,27 @@ this.service.getProviderSupply(this.app.currentUser.userId).subscribe({
     this.addSupplyRequest.latitude = this.app.currentUser.latitude;
     this.addSupplyRequest.longitude = this.app.currentUser.longitude;
     this.findCategoryId(this.categoryName);
-    // console.log(this.categoryName);
     console.log(this.addSupplyRequest)
     this.service.addSupply(this.addSupplyRequest).subscribe({
-      next: data => { console.log(data) }, error: error => { console.log(error) }
+      next: data => { console.log(data) }, error: error => { console.log(error),this.getProviderSupply() }
+    });
+    
+  }
+  getProviderSupply(){
+    this.service.getProviderSupply(this.app.currentUser.userId).subscribe({
+      next: data => { console.log(data) ,this.listOfSupplies=data}, error: error => { console.log(error) }
     });
 
-
-
-
-
+  }
+  updateApprove(supply:GetSupplyResponse){
+    var approve=new ApproveSupplyRequest();
+    approve.approverId=this.app.currentUser.userId;
+    approve.supplyId=supply.supplyId;
+  console.log(approve)
+    this.service.approveSupply(approve).subscribe({
+      next: data => { console.log(data)}
+     , error: error => { console.log(error) }
+   });
 
   }
 

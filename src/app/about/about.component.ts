@@ -27,7 +27,12 @@ public toProvider(){
 
 }
 public toValidator(){
-  this.router.navigateByUrl('/validator')
+  this.router.navigateByUrl('/login')
 
 }
+public toVolunteer(){
+  this.router.navigateByUrl('/login')
+
+}
+
 }

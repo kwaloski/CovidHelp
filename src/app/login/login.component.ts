@@ -35,10 +35,10 @@ export class LoginComponent implements OnInit {
 
   sendOTP() {
      this.sendOtpRequest.MobileNumber='91'+this.sendOtpRequest.MobileNumber;
-    // this.service.sendOTP(this.sendOtpRequest).subscribe({
-    //   next: data => { console.log(data) }
-    //   , error: error => { console.log(error) }
-    // });
+    this.service.sendOTP(this.sendOtpRequest).subscribe({
+      next: data => { console.log(data) }
+      , error: error => { console.log(error) }
+    });
    
   this.service.getUserByPhone(this.sendOtpRequest.MobileNumber).subscribe({
       next: data => { this.user = data, console.log(data) }
@@ -51,14 +51,14 @@ export class LoginComponent implements OnInit {
   }
 
   loginWithOTP() {
-    this.response.message = "OTP verified success";
-    this.toRequestor()
-    // this.verifyOtpRequest.MobileNumber = this.sendOtpRequest.MobileNumber;
-    // this.service.verifyOTP(this.verifyOtpRequest).subscribe({
-    //   next: data => { this.response = data, console.log(data),this.toRequestor() }
-    //   , error: error => { console.log(error) }
-    // });
-    //   console.log(this.response);
+    // this.response.message = "OTP verified success";
+    // this.toRequestor()
+    this.verifyOtpRequest.MobileNumber = this.sendOtpRequest.MobileNumber;
+    this.service.verifyOTP(this.verifyOtpRequest).subscribe({
+      next: data => { this.response = data, console.log(data),this.toRequestor() }
+      , error: error => { console.log(error) }
+    });
+      console.log(this.response);
 
 
 
@@ -74,6 +74,9 @@ export class LoginComponent implements OnInit {
     } else if (this.response.message == "OTP verified success" && this.user == null) {
       this.router.navigateByUrl('/signup')
     }else if (this.response.message == "OTP verified success" && this.user.userTypeId ==4 ) {
+      this.app.setUser(this.user);
+      this.router.navigateByUrl('/dashboard')
+    }else if (this.response.message == "OTP verified success" && this.user.userTypeId ==3 ) {
       this.app.setUser(this.user);
       this.router.navigateByUrl('/validator')
     }

@@ -15,7 +15,7 @@ import { ValidatorComponent } from './validator/validator.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'requestor',
+    redirectTo: 'about',
     pathMatch: 'full'
   },
   {
@@ -33,8 +33,7 @@ const routes: Routes = [
     component:LoginComponent
   },{
     path: 'dashboard',
-    component:DashboardComponent,
-    canActivate: [AuthGuardService]
+    component:DashboardComponent
   },
   {
     path: 'provider',
@@ -51,7 +50,7 @@ const routes: Routes = [
   }
   // {
   //   path: '**',
-  //   redirectTo: 'requestor'
+  //   redirectTo: 'aboutus=='
   // }
 ];
 

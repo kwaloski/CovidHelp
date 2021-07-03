@@ -9,6 +9,7 @@ export class GetSupplyResponse{
     description!: string;
     createdDate!: string;
     distance!: number;
+    isActive!:boolean;
     
   
 }

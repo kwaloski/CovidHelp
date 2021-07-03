@@ -21,7 +21,7 @@ export class ReviewComponent implements OnInit {
   constructor(private service:ServiceService,private app:AppComponent,public dialog: MatDialog,private router: Router) {
     this.provider=history.state.data;
     this.rating=new AddRatingRequest(this.provider.providerId);
-   console.log(app.currentUser);
+    console.log(app.currentUser);
     this.service.getUserByPhone(this.provider.phone).subscribe({
       next: data => { console.log(data) }
       , error: error => { console.log(error) }
@@ -50,18 +50,18 @@ export class ReviewComponent implements OnInit {
    }else{
      this.rating.userId=this.app.currentUser.userId;
     this.service.addSupplyStats(this.rating).subscribe({
-      next: data => { console.log(data),this.toRequestor() }, error: error => { console.log(error) }
+      next: data => { console.log(data),this.toRequestor() }, error: error => { console.log(error),this.toRequestor() }
     });
    }
-    
-    // console.log(this.rating);
-    // this.service.addSupplyStats(this.rating).subscribe({
-    //   next: data => { console.log(data) }, error: error => { console.log(error) }
-    // });
   }
   toRequestor(){
     alert("Thank you for your review!!!!!");
     this.router.navigateByUrl('/requestor');
+  }
+  getRatings(){
+    this.service.getSupplyStats(this.provider.providerId).subscribe({
+      next: data => { console.log(this.ratings=data.supplierRecords) }, error: error => { console.log(error) }
+    });
   }
 
 }

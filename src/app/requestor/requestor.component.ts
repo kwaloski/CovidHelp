@@ -49,17 +49,28 @@ export class RequestorComponent implements OnInit {
     if (this.app.location.length == 0) {
       this.show=false;
       this.service.getSupply().subscribe({
-        next: data => { this.providers=data;console.log(data) }, error: error => { console.log(error) }
+        next: data => { this.providers=data;this.selectedProvider=data;console.log(data) }, error: error => { console.log(error) }
       });
     } else {
       this.service.getSupplyByLocation(this.supplyByLocation).subscribe({
         next: data => {this.providers=data; this.providers.forEach(element => {
           element.distance=Number(element.distance.toFixed(1));
-        }); console.log(data);console.log(this.providers) }, error: error => { console.log(error) }
+        });this.selectedProvider=this.providers; console.log(data) }, error: error => { console.log(error) }
       });
     }
 
 
+  }
+  selectCategory(category:number){
+    this.selectedProvider = [];
+    for (var p of this.providers) {
+          if (p.categoryId == category)
+    
+         this.selectedProvider.push(p)
+       }
+    
+      // }
+    
   }
   // addSupplyDetails(details:[]){
   // for(let i=0;i<details.length;i++){

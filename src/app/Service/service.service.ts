@@ -11,6 +11,7 @@ import { VerifyOtpResponse } from '../Response.Model/verifyOtp.response';
 import { AddSupplyCategory } from '../Request.Model/addSupplyCategory.request';
 import { AddSupply } from '../Request.Model/addSupply.request.model';
 import { ApproveRequest } from '../Request.Model/approve.request';
+import { ApproveSupplyRequest } from '../Request.Model/approveSupply.request';
 
 
 @Injectable({
@@ -20,8 +21,8 @@ export class ServiceService {
 
 signUpURL:string="https://covidverifiedhelp.azurewebsites.net/api/v1/Signup";
 Url:string="https://covidverifiedhelp.azurewebsites.net/api/v1/";
-sendOTPUrl:string="https://communicationservice20201217175238.azurewebsites.net/api/SendOTP?code=3ydeWoUHJO8akCUi3yBa6IxbR4wt/AkVHfeyA0XuuOYYAlBHhtIdKQ==";
-verifyOTPUrl="https://communicationservice20201217175238.azurewebsites.net/api/VerifyOTP?code=64zofYmdUyTXMRxOGHj8sE5kISutU1OwTDz5Zmc4fufWaziQLwjwTA==";
+sendOTPUrl:string="https://verifiedcovidhelpotpservice.azurewebsites.net/api/SendOTP?code=0FPnWujh0YSXB5SEaH4oEW97hMrXmKmJBZd57HOR6jwImlntychKtg==";
+verifyOTPUrl="https://verifiedcovidhelpotpservice.azurewebsites.net/api/VerifyOTP?code=/1ylL3NHi4eYaExtJbEithdBqZxXadf974ZuuWPSPXuDgJv69lbd0Q==";
   constructor(public http:HttpClient) { 
     
   }
@@ -86,5 +87,8 @@ return this.http.post(this.sendOTPUrl,request);
   }
   approveUser(request:ApproveRequest):Observable<any>{
     return this.http.put(`${this.Url}ApproveUser`,request);
+  }
+  approveSupply(request:ApproveSupplyRequest):Observable<any>{
+    return this.http.put(`${this.Url}ApproveSupply`,request);
   }
 }

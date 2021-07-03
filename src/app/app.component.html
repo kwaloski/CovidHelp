@@ -5,31 +5,34 @@
   <span style="display: inline-block;">My Company</span>
 </a> -->
 
+
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-    <div class="container">
+  
+  <div class="container">
+   
       <div class="logo-image">
         <img src='/assets/appicon.png' class="img-fluid">
       </div>
-    
+   
     <button class="navbar-toggler" type="button"  (click)="toggleNavbar()" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
     <div   class="collapse navbar-collapse" id="navbarTogglerDemo02" [ngClass]="{ 'show': navbarOpen }">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0" >
             <li class="nav-item" style="margin-bottom: 10px;" *ngIf="!login">
-                <a class="navbar-brand" routerLink="/requestor" (click)="toggleNavbar()">Home</a>
+                <a class="navbar-brand" style="float: right;" routerLink="/requestor" (click)="toggleNavbar()">Home</a>
             </li>
           <li class="nav-item" *ngIf="!login">
-              <a class="navbar-brand" routerLink="/about" (click)="toggleNavbar()">About us</a>
+              <a class="navbar-brand" style="float: right;"   routerLink="/about" (click)="toggleNavbar()">About us</a>
           </li>
           <li class="nav-item" *ngIf="!login">
-            <a class="navbar-brand" routerLink="/login" (click)="toggleNavbar()">Login</a>
+            <a class="navbar-brand" style="float: right; margin-top: 10px; " routerLink="/login" (click)="toggleNavbar()">Login</a>
         </li>
         <li class="nav-item" *ngIf="login">
-          <a class="navbar-brand" (click)="toggleNavbar()">Hi {{currentUser.firstName}}</a>
+          <a class="navbar-brand" style="float: right; margin-top: 10px;" (click)="toggleNavbar()">Hi {{currentUser.firstName}}</a>
       </li>
       <li class="nav-item" *ngIf="login">
-        <a class="navbar-brand" routerLink="/login" (click)="toggleNavbar()">Log Out</a>
+        <a class="navbar-brand" style="float: right; margin-top: 10px;" routerLink="/login" (click)="toggleNavbar()">Log Out</a>
     </li>
 
       </ul>
@@ -39,6 +42,7 @@
     
 
 </nav>
+
 
   <!-- <div>Latitude: {{location[0]}}</div>
   <div>Longitude: {{location[1]}}</div> -->

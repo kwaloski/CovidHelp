@@ -20,11 +20,16 @@ VolunteerList:UnApprovedUser[]=[];
 
   constructor(private service:ServiceService,private app:AppComponent) {
     
-    service.getUnApproveUser(3).subscribe({
+    service.getUnApproveUser(1).subscribe({
          next: data => { console.log(data);this.VolunteerList=data }
         , error: error => { console.log(error) }
       });
+    // service.getUnapprovedUser(1).subscribe({
+    //     next: data => { console.log(data);this.VolunteerList=data }
+    //    , error: error => { console.log(error) }
+    //  });
    }
+   
 
   ngOnInit(): void {
   }
@@ -35,13 +40,19 @@ VolunteerList:UnApprovedUser[]=[];
     approve.userId=user.id;
   console.log(approve)
     this.service.approveUser(approve).subscribe({
-      next: data => { console.log(data);this.VolunteerList=data }
-     , error: error => { console.log(error) }
+      next: data => { console.log(data)}
+     , error: error => { console.log(error);this.getUnapprovedList() }
    });
     
   }
-toRequestor(){
+
+getUnapprovedList(){
   // this.selectedList=Providers;
+  this.service.getUnApproveUser(1).subscribe({
+    next: data => { console.log(data);this.VolunteerList=data }
+   , error: error => { console.log(error) }
+ });
+
 
 }
 getSuppliers(){

@@ -19,7 +19,10 @@
             <tr *ngFor="let supplies of listOfSupplies">
               <td>{{supplies.categoryName}}</td>
               <td>{{supplies.description}}</td>
-              <td>{{supplies.phone}}</td>
+              <td><mat-slide-toggle [(ngModel)]="supplies.isActive" ></mat-slide-toggle></td>
+              <td>
+                <a mat-raised-button [routerLink]="['/validator']" (click)="updateApprove(supplies)"  >Update</a>
+              </td>
               <!-- <td><mat-slide-toggle [(ngModel)]="supplies.status">Slide me!</mat-slide-toggle>
 
                </td> -->

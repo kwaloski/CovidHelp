@@ -25,6 +25,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { AuthGuardService } from './auth-guard.service';
 import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
@@ -41,6 +42,7 @@ import {MatSelectModule} from '@angular/material/select';
     SignupComponent
   ],
   imports: [
+    MatToolbarModule,
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,

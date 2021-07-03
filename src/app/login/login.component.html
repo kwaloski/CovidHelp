@@ -47,7 +47,7 @@
           <input class="form-control" type="text" matInput #message maxlength="12" 
                  placeholder="Enter your mobile number " [(ngModel)]=sendOtpRequest.MobileNumber name="phone"
                  #phone="ngModel" required>
-          <mat-hint>Add +91 with your number</mat-hint>
+          <mat-hint></mat-hint>
           
         </mat-form-field>
         <a mat-raised-button style="float: right;" (click)="sendOTP()">Send OTP</a>
@@ -63,11 +63,14 @@
     <hr>
     <a mat-raised-button [routerLink]="['/signup']" [state]="{data:2}" >Sign up</a>
   <br>
+  <br>
   Are You ?
   <br>
-  <a mat-raised-button [routerLink]="['/signup']" [state]="{data:1}" >Supplier</a>
+  <br>  
+ 
+  <a mat-raised-button [routerLink]="['/signup']" [state]="{data:1}" style="margin-right: 10px;">Supplier</a>
   Or
-  <a mat-raised-button [routerLink]="['/signup']" [state]="{data:3}" >Volunteer</a>
+  <a mat-raised-button [routerLink]="['/signup']" [state]="{data:3}" style="margin-left: 10px;" >Volunteer</a>
   </mat-card-content>
 </mat-card>
 

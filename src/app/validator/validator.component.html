@@ -1,43 +1,44 @@
-<!-- <p>requestor works!</p> -->
-<div class="container">
-    <div class="btn-group  " role="group" aria-label="Basic example" style="margin-top: 30px;">
-      <button class="btn btn-outline-primary" type="button" (click)="getSuppliers()">Supplier</button>
-  
-  
-      <button class="btn btn-outline-primary" type="button" (click)="toRequestor()">Supplies</button>
-  
-  
-      <button class="btn btn-outline-primary" type="button"  >Volunteer</button>
-      <!-- </div> -->
-    </div>
-    <div class="table-responsive">
-      <table class="table table-bordered " style="margin-top: 30px; ">
-        <thead class="table-dark">
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Contact</th>
-            <th scope="col">Remark</th>
-            <th scope="col">Status</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let providor of VolunteerList">
-            <td>{{providor.firstName}} {{providor.lastName}}</td>
-            <td>{{providor.phone}}</td>
-            <td>{{providor.details}}</td>
-             <td><mat-slide-toggle [(ngModel)]="providor.isApproved" ></mat-slide-toggle>
-
-               </td>
-               <td>
-                <a mat-raised-button [routerLink]="['/validator']" (click)="updateApprove(providor)"  >Update</a>
-               </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  
+  <!-- <p>requestor works!</p> -->
+  <div class="container">
+      <!-- <div class="btn-group  " role="group" aria-label="Basic example" style="margin-top: 30px;">
+        <button class="btn btn-outline-primary" type="button" (click)="getSuppliers()">Supplier</button>
     
-  
-  
-  </div>
+    
+        <button class="btn btn-outline-primary" type="button" (click)="toRequestor()">Supplies</button>
+    
+    
+        <button class="btn btn-outline-primary" type="button"  >Volunteer</button>
+      
+      </div> -->
+      <h2>List of UnApproved Supplier:</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered " style="margin-top: 30px; ">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Contact</th>
+              <th scope="col">Remark</th>
+              <th scope="col">Status</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let providor of VolunteerList">
+              <td>{{providor.firstName}} {{providor.lastName}}</td>
+              <td><a href="tel: {{providor.phone}}" class="button button-positive">Call </a></td>
+              <td>{{providor.details}}</td>
+              <td><mat-slide-toggle [(ngModel)]="providor.isApproved" ></mat-slide-toggle>
+
+                </td>
+                <td>
+                  <a mat-raised-button [routerLink]="['/validator']" (click)="updateApprove(providor)"  >Update</a>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    
+      
+    
+    
+    </div>
