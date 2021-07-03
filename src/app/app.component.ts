@@ -36,7 +36,7 @@ this.currentUser= new User();
 }
 ngOnInit() {
   
-  // this.router.navigate(['about'])
+  this.router.navigate(['/'])
 }
 login=false;
 

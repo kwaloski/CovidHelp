@@ -47,11 +47,11 @@ const routes: Routes = [
   },{
     path: 'signup',
     component:SignupComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'about'
   }
-  // {
-  //   path: '**',
-  //   redirectTo: 'aboutus=='
-  // }
 ];
 
 @NgModule({
