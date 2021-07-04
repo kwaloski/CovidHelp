@@ -10,12 +10,13 @@
     <button class="btn btn-outline-primary" type="button" (click)="onSelectMed()">Medicine</button>
    
   </div> -->
-  <div class="btn-group  " role="group" aria-label="Basic example" style="margin-top: 30px; "
+  <div style="align-items: center; align-content: center; text-align: center;">
+  <div class="btn-group  " role="group" aria-label="Basic example" style="margin-top: 30px;margin-right: 10px; "
   *ngFor="let category of categoryList">
     <button mat-fab color="primary"   matTooltip={{category.description}} (click)="selectCategory(category.id)">{{category.name}}</button>
     
   </div>
- 
+</div>
 
 
   <div class="table-responsive">
@@ -51,6 +52,9 @@
       </tbody>
     </table>
   </div>
+  <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+    <p style="color: aquamarine">Please Wait. </p>  
+    </ngx-spinner>  
 
   <!-- <form #requestForm="ngForm" (ngSubmit)="addRequest()">
     

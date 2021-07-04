@@ -9,6 +9,7 @@ import { ServiceService } from '../Service/service.service';
 import { SupplyByLocation } from '../Request.Model/supplyByLocation.request';
 import { AppComponent } from '../app.component';
 import { GetSupplyResponse } from '../Response.Model/getSupply.response';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-requestor',
@@ -26,7 +27,7 @@ export class RequestorComponent implements OnInit {
   supplyByLocation: any;
   show:boolean=true;
   //supplywithDetails:SupplyWithDetail[]=[]
-  constructor(private route: Router, private service: ServiceService, private app: AppComponent) {
+  constructor(private route: Router, private service: ServiceService, private app: AppComponent,private SpinnerService: NgxSpinnerService ){
 
     this.service.getSupplyCategory().subscribe({
       next: data => { this.categoryList = data }, error: error => { console.log(error) }
@@ -36,29 +37,32 @@ export class RequestorComponent implements OnInit {
     this.supplyByLocation = new SupplyByLocation();
     this.supplyByLocation.latitude = app.location[0];
     this.supplyByLocation.longitude = app.location[1];
-    this.showSuppliesAs();
+    
 
 
   }
   ngOnInit(): void {
 
-
+    this.showSuppliesAs();
     //this.selectedProvider = this.providers
   }
   showSuppliesAs() {
+    
     if (this.app.location.length == 0) {
       this.show=false;
+       this.SpinnerService.show();  
       this.service.getSupply().subscribe({
-        next: data => { this.providers=data;this.selectedProvider=data;console.log(data) }, error: error => { console.log(error) }
+        next: data => { this.providers=data;this.selectedProvider=data;console.log(data);this.SpinnerService.hide();     }, error: error => { console.log(error) }
       });
     } else {
+      this.SpinnerService.show();  
       this.service.getSupplyByLocation(this.supplyByLocation).subscribe({
         next: data => {this.providers=data; this.providers.forEach(element => {
           element.distance=Number(element.distance.toFixed(1));
-        });this.selectedProvider=this.providers; console.log(data) }, error: error => { console.log(error) }
+        });this.selectedProvider=this.providers; console.log(data);this.SpinnerService.hide();   }, error: error => { console.log(error) }
       });
     }
-
+    
 
   }
   selectCategory(category:number){

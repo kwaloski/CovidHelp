@@ -53,6 +53,10 @@ setUser(user:User){
 this.currentUser=user;
 this.login=true;
 }
+refresh()
+{
+  window.location.reload();
+}
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen;
   }

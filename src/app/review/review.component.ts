@@ -9,6 +9,7 @@ import { ServiceService } from '../Service/service.service';
 import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { Router } from '@angular/router';
+import { User } from '../user';
 @Component({
   selector: 'app-review',
   templateUrl: './review.component.html',
@@ -18,6 +19,7 @@ export class ReviewComponent implements OnInit {
   provider!: GetSupplyResponse;
   ratings:GetAllRatingResponse[]=[]
   rating:any;
+ 
   constructor(private service:ServiceService,private app:AppComponent,public dialog: MatDialog,private router: Router) {
     this.provider=history.state.data;
     this.rating=new AddRatingRequest(this.provider.providerId);

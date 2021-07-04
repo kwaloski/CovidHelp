@@ -27,6 +27,7 @@ import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSelectModule} from '@angular/material/select';
+import { NgxSpinnerModule } from "ngx-spinner"; 
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import {MatSelectModule} from '@angular/material/select';
     SignupComponent
   ],
   imports: [
+    NgxSpinnerModule,
     MatToolbarModule,
     MatInputModule,
     MatSelectModule,
