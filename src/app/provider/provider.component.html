@@ -11,7 +11,7 @@
             <tr>
               <th scope="col">Item</th>
               <th scope="col">Description</th>
-              <th scope="col">Status</th>
+              <th scope="col">Active</th>
               <th scope="col">Update</th>
             </tr>
           </thead>
@@ -21,7 +21,7 @@
               <td>{{supplies.description}}</td>
               <td><mat-slide-toggle [(ngModel)]="supplies.isActive" ></mat-slide-toggle></td>
               <td>
-                <a mat-raised-button [routerLink]="['/validator']" (click)="updateApprove(supplies)"  >Update</a>
+                <a mat-raised-button (click)="updateApprove(supplies)"  >Update</a>
               </td>
               <!-- <td><mat-slide-toggle [(ngModel)]="supplies.status">Slide me!</mat-slide-toggle>
 

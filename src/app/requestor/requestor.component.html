@@ -32,7 +32,7 @@
       <tbody>
         <!-- <ng-container *ngFor="let provider of selectedProvider"> -->
         <tr *ngFor="let provider of selectedProvider">
-          <td><a [routerLink]="['/review']" [state]="{data:provider}"> {{provider.providerName}}</a>
+          <td><a [routerLink]="['/review']" [state]="{data:provider}"> {{provider.providerName}}</a><br>
             <ngb-rating [max]="5" [(rate)]=provider.providerRating [readonly]="true"></ngb-rating>
           </td>
           <td>{{provider.description}}</td>

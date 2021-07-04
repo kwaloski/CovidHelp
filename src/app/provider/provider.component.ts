@@ -74,14 +74,16 @@ this.service.getProviderSupply(this.app.currentUser.userId).subscribe({
 
   }
   updateApprove(supply:GetSupplyResponse){
-    var approve=new ApproveSupplyRequest();
-    approve.approverId=this.app.currentUser.userId;
-    approve.supplyId=supply.supplyId;
-  console.log(approve)
-    this.service.approveSupply(approve).subscribe({
-      next: data => { console.log(data)}
-     , error: error => { console.log(error) }
-   });
+  //   var approve=new ApproveSupplyRequest();
+  //   approve.approverId=this.app.currentUser.userId;
+  //   approve.supplyId=supply.supplyId;
+  // console.log(approve)
+  //   this.service.approveSupply(approve).subscribe({
+  //     next: data => { console.log(data)}
+  //    , error: error => { console.log(error) }
+  //  });
+  alert("To be implemented")
+  return false;
 
   }
 
