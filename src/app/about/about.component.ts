@@ -31,7 +31,7 @@ public toValidator(){
 
 }
 public toVolunteer(){
-  this.router.navigateByUrl('/login')
+  this.router.navigate(['/signup'],{state:{data:3}})
 
 }
 

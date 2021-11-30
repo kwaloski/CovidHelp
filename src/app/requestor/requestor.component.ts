@@ -59,7 +59,7 @@ export class RequestorComponent implements OnInit {
       this.service.getSupplyByLocation(this.supplyByLocation).subscribe({
         next: data => {this.providers=data; this.providers.forEach(element => {
           element.distance=Number(element.distance.toFixed(1));
-        });this.selectedProvider=this.providers; console.log(data);this.SpinnerService.hide();   }, error: error => { console.log(error) }
+        });this.selectedProvider=this.providers.sort((a,b)=>(a.distance<b.distance ?-1:1)); console.log(this.providers);this.SpinnerService.hide();   }, error: error => { console.log(error) }
       });
     }
     
