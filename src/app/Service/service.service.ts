@@ -19,10 +19,10 @@ import { ApproveSupplyRequest } from '../Request.Model/approveSupply.request';
 })
 export class ServiceService {
 
-signUpURL:string="https://covidverifiedhelp.azurewebsites.net/api/v1/Signup";
-Url:string="https://covidverifiedhelp.azurewebsites.net/api/v1/";
-sendOTPUrl:string="https://verifiedcovidhelpotpservice.azurewebsites.net/api/SendOTP?code=0FPnWujh0YSXB5SEaH4oEW97hMrXmKmJBZd57HOR6jwImlntychKtg==";
-verifyOTPUrl="https://verifiedcovidhelpotpservice.azurewebsites.net/api/VerifyOTP?code=/1ylL3NHi4eYaExtJbEithdBqZxXadf974ZuuWPSPXuDgJv69lbd0Q==";
+signUpURL:string="";
+Url:string="";
+sendOTPUrl:string="";
+verifyOTPUrl="";
   constructor(public http:HttpClient) { 
     
   }

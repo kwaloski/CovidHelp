@@ -1,6 +1,7 @@
-# MyApp
+# Verified Covid Help
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.4.
+Solution for a problem people were facing in pandemic that is supply and demand. The platform Verfied covid help where an individual can create supply and request something and volunteer
+
 
 ## Development server
 
